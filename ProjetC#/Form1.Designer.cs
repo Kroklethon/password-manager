@@ -28,12 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            lbl_choisir = new Label();
+            openFileDialog1 = new OpenFileDialog();
+            SuspendLayout();
+            // 
+            // lbl_choisir
+            // 
+            lbl_choisir.AutoSize = true;
+            lbl_choisir.Location = new Point(111, 67);
+            lbl_choisir.Name = "lbl_choisir";
+            lbl_choisir.Size = new Size(174, 15);
+            lbl_choisir.TabIndex = 0;
+            lbl_choisir.Text = "Choisir fichier de Mots de Passe";
+            lbl_choisir.Click += label1_Click;
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.DefaultExt = "xml";
+            openFileDialog1.FileName = "openFileDialog";
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(lbl_choisir);
+            Name = "Form1";
+            Text = "Login";
+            Load += Form1_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label lbl_choisir;
+        private OpenFileDialog openFileDialog1;
     }
 }
