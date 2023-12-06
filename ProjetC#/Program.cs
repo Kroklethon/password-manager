@@ -1,3 +1,11 @@
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Xml;
+using System.Xml.Serialization;
+
+
 namespace ProjetC_
 {
     internal static class Program
@@ -11,7 +19,7 @@ namespace ProjetC_
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Application.Run(new LoginWindow());
         }
     }
 }
