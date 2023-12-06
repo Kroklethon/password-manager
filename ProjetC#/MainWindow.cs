@@ -60,15 +60,17 @@ namespace ProjetC_
 
                 if (editForm.ShowDialog() == DialogResult.OK)
                 {
+                    editForm.PasswordEntry.Website = editForm.txtbx_Url.Text;
+                    editForm.PasswordEntry.Username = editForm.txtbx_User.Text; 
+                    editForm.PasswordEntry.Password = editForm.txtbx_Mdp.Text;
                     int selectedIndex = lstPasswords.SelectedIndex;
-                    Debug.WriteLine(selectedIndex);
                     passwordEntries[selectedIndex] = editForm.PasswordEntry;
                     DisplayEntries();
                 }
             }
             else
             {
-                MessageBox.Show("Please select an entry to edit.", "Edit Entry", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Veuillez sélectionner une entrée à modifier.", "Modifier une entrée", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }
@@ -83,7 +85,7 @@ namespace ProjetC_
              }
              else
              {
-                    MessageBox.Show("Please select an entry to remove.", "Remove Entry", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Veuillez sélectionner une entrée à supprimer.", "Supprimer une entrée", MessageBoxButtons.OK, MessageBoxIcon.Information);
              }
                 
         }
