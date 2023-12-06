@@ -8,7 +8,6 @@ namespace ProjetC_
     public partial class LoginWindow : Form
     {
         private const string masterPassword = "myPass123";
-        private string hashedPassword = string.Empty;
         private string filePath = string.Empty;
         private List<PasswordEntry> passwordEntries = new List<PasswordEntry>();
         public LoginWindow()
@@ -43,7 +42,7 @@ namespace ProjetC_
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string enteredPassword = txtbxPassword.Text;
-          
+            string hashedPassword = string.Empty;
             if (enteredPassword == masterPassword)
             {
                 using (SHA256 mySHA256 = SHA256.Create())
@@ -60,7 +59,6 @@ namespace ProjetC_
                 mainWindow.SetPasswordEntries(passwordEntries);
                 mainWindow.Show();
 
-                //ShowPasswordEntries();
             }else if(filePath == string.Empty)
             {
                 MessageBox.Show("Sélectionnez un fichier", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);

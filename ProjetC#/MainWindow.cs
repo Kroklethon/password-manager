@@ -13,7 +13,7 @@ namespace ProjetC_
 
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            //load the password entries into the list view
+            DisplayEntries();
         }
 
         public MainWindow()
@@ -28,12 +28,11 @@ namespace ProjetC_
 
         private void DisplayEntries()
         {
-            /*lstPasswords.Items.Clear();
+            //load the password entries into the list box
             foreach (var entry in passwordEntries)
             {
-                ListViewItem listViewItem = lstPasswords.Items.Add(entry.ToString());
-
-            }*/
+                lstPasswords.Items.Add(entry);
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
