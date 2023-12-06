@@ -28,6 +28,7 @@ namespace ProjetC_
 
         private void DisplayEntries()
         {
+            lstPasswords.Items.Clear();
             //load the password entries into the list box
             foreach (var entry in passwordEntries)
             {
@@ -72,16 +73,17 @@ namespace ProjetC_
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            /* if (lstPasswords.SelectedItem != null)
+             if (lstPasswords.SelectedItem != null)
              {
-                 int selectedIndex = lstPasswords.SelectedIndex;
-                 passwordEntries.RemoveAt(selectedIndex);
-                 DisplayEntries();
+                var selectedEntry = (PasswordEntry)lstPasswords.SelectedItem;
+                    passwordEntries.Remove(selectedEntry);
+                    DisplayEntries();
              }
              else
              {
-                 MessageBox.Show("Please select an entry to remove.", "Remove Entry", MessageBoxButtons.OK, MessageBoxIcon.Information);
-             }*/
+                    MessageBox.Show("Please select an entry to remove.", "Remove Entry", MessageBoxButtons.OK, MessageBoxIcon.Information);
+             }
+                
         }
     }
 }
