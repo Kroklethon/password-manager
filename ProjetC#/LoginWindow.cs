@@ -45,6 +45,7 @@ namespace ProjetC_
         {
             string enteredPassword = txtbxPassword.Text;
             string hashedPassword = string.Empty;
+            string initialVector = string.Empty;
             if (enteredPassword == masterPassword)
             {
                 using (SHA256 mySHA256 = SHA256.Create())
@@ -56,10 +57,13 @@ namespace ProjetC_
                         builder.Append(bytes[i].ToString("x2"));
                     }
                     hashedPassword = builder.ToString();
+                    Debug.WriteLine(hashedPassword);
+
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.SetPasswordEntries(passwordEntries);
+                    mainWindow.HashedPassword = hashedPassword;
+                    mainWindow.Show();
                 }
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.SetPasswordEntries(passwordEntries);
-                mainWindow.Show();
 
             }else if(filePath == string.Empty)
             {
