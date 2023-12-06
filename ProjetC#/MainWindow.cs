@@ -21,22 +21,23 @@ namespace ProjetC_
         }
 
         // Load password entries from XML file into passwordEntries list
-
-
-        private void ShowPasswordEntries()
+        private void LoadPasswordEntriesFromXml(string filePath)
         {
-            /*pnlLogin.Visible = false;
-            pnlPasswordManager.Visible = true;
-            DisplayEntries();*/
+            XmlSerializer serializer = new XmlSerializer(typeof(List<PasswordEntry>));
+
+            using (TextReader reader = new StreamReader(filePath))
+            {
+                passwordEntries = (List<PasswordEntry>)serializer.Deserialize(reader);
+            }
         }
 
         private void DisplayEntries()
         {
-/*            lstPasswords.Items.Clear();
+            lstPasswords.Items.Clear();
             foreach (var entry in passwordEntries)
             {
-                lstPasswords.Items.Add(entry);
-            }*/
+                ListViewItem listViewItem = lstPasswords.Items.Add(entry);
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -80,15 +81,6 @@ namespace ProjetC_
             {
                 MessageBox.Show("Please select an entry to remove.", "Remove Entry", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }*/
-        }
-        private void LoadPasswordEntriesFromXml(string filePath)
-        {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<PasswordEntry>));
-
-            using (TextReader reader = new StreamReader(filePath))
-            {
-                passwordEntries = (List<PasswordEntry>)serializer.Deserialize(reader);
-            }
         }
         public class PasswordEntry
         {
