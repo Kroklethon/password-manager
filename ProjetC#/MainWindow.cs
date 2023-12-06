@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Serialization;
@@ -42,9 +43,9 @@ namespace ProjetC_
             if (addEntryForm.ShowDialog() == DialogResult.OK)
             {
                 PasswordEntry passwordEntry = new PasswordEntry();
-                passwordEntry.Website = addEntryForm.txtbx_Url.ToString();
-                passwordEntry.Username = addEntryForm.txtbx_User.ToString();
-                passwordEntry.Password = addEntryForm.txtbx_Mdp.ToString();
+                passwordEntry.Website = addEntryForm.txtbx_Url.Text;
+                passwordEntry.Username = addEntryForm.txtbx_User.Text;
+                passwordEntry.Password = addEntryForm.txtbx_Mdp.Text;
                 passwordEntries.Add(passwordEntry);
                 DisplayEntries();
             }
@@ -60,6 +61,7 @@ namespace ProjetC_
                 if (editForm.ShowDialog() == DialogResult.OK)
                 {
                     int selectedIndex = lstPasswords.SelectedIndex;
+                    Debug.WriteLine(selectedIndex);
                     passwordEntries[selectedIndex] = editForm.PasswordEntry;
                     DisplayEntries();
                 }
