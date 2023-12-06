@@ -36,6 +36,7 @@
             lbl_Mdp = new Label();
             btn_add = new Button();
             btn_Cancel = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
             // txtbx_User
@@ -106,11 +107,22 @@
             btn_Cancel.Text = "Cancel";
             btn_Cancel.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            button1.Location = new Point(242, 140);
+            button1.Name = "button1";
+            button1.Size = new Size(132, 47);
+            button1.TabIndex = 8;
+            button1.Text = "Generer un mot de passe";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // AddEntryForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(452, 243);
+            Controls.Add(button1);
             Controls.Add(btn_Cancel);
             Controls.Add(btn_add);
             Controls.Add(lbl_Mdp);
@@ -134,5 +146,6 @@
         public TextBox txtbx_User;
         public TextBox txtbx_Mdp;
         public TextBox txtbx_Url;
+        private Button button1;
     }
 }

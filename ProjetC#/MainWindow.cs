@@ -69,15 +69,17 @@ namespace ProjetC_
 
                 if (editForm.ShowDialog() == DialogResult.OK)
                 {
+                    editForm.PasswordEntry.Website = editForm.txtbx_Url.Text;
+                    editForm.PasswordEntry.Username = editForm.txtbx_User.Text; 
+                    editForm.PasswordEntry.Password = editForm.txtbx_Mdp.Text;
                     int selectedIndex = lstPasswords.SelectedIndex;
-                    Debug.WriteLine(selectedIndex);
                     passwordEntries[selectedIndex] = editForm.PasswordEntry;
                     DisplayEntries();
                 }
             }
             else
             {
-                MessageBox.Show("Please select an entry to edit.", "Edit Entry", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Veuillez sélectionner une entrée à modifier.", "Modifier une entrée", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }
@@ -87,14 +89,14 @@ namespace ProjetC_
             if (lstPasswords.SelectedItem != null)
             {
                 var selectedEntry = (PasswordEntry)lstPasswords.SelectedItem;
-                passwordEntries.Remove(selectedEntry);
-                DisplayEntries();
-            }
-            else
-            {
-                MessageBox.Show("Please select an entry to remove.", "Remove Entry", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
+                    passwordEntries.Remove(selectedEntry);
+                    DisplayEntries();
+             }
+             else
+             {
+                    MessageBox.Show("Veuillez sélectionner une entrée à supprimer.", "Supprimer une entrée", MessageBoxButtons.OK, MessageBoxIcon.Information);
+             }
+                
         }
 
         private void sauvegarderToolStripMenuItem_Click(object sender, EventArgs e)

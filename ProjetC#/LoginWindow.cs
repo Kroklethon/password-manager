@@ -63,6 +63,7 @@ namespace ProjetC_
                     mainWindow.SetPasswordEntries(passwordEntries);
                     mainWindow.HashedPassword = hashedPassword;
                     mainWindow.Show();
+                    this.Hide();
                 }
 
             }
