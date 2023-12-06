@@ -58,6 +58,7 @@ namespace ProjetC_
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.SetPasswordEntries(passwordEntries);
                 mainWindow.Show();
+                this.Hide();
 
             }else if(filePath == string.Empty)
             {
