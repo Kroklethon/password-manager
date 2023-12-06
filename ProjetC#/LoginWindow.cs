@@ -28,6 +28,8 @@ namespace ProjetC_
                     //Get the path of specified file
                     filePath = openFileDialog.FileName;
 
+                    label1.Text = filePath;
+
                     //Read the contents of the file into a stream
                     var fileStream = openFileDialog.OpenFile();
 
@@ -43,6 +45,7 @@ namespace ProjetC_
         {
             string enteredPassword = txtbxPassword.Text;
             string hashedPassword = string.Empty;
+            string initialVector = string.Empty;
             if (enteredPassword == masterPassword)
             {
                 using (SHA256 mySHA256 = SHA256.Create())
@@ -54,15 +57,15 @@ namespace ProjetC_
                         builder.Append(bytes[i].ToString("x2"));
                     }
                     hashedPassword = builder.ToString();
-                }
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.SetPasswordEntries(passwordEntries);
-                mainWindow.Show();
-                this.Hide();
+                    Debug.WriteLine(hashedPassword);
 
-            }else if(filePath == string.Empty)
-            {
-                MessageBox.Show("Sélectionnez un fichier", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.SetPasswordEntries(passwordEntries);
+                    mainWindow.HashedPassword = hashedPassword;
+                    mainWindow.Show();
+                    this.Hide();
+                }
+
             }
             else
             {

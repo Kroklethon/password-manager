@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.Intrinsics.Arm;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using System.Security.Cryptography;
+using System.Text;
+using System.Diagnostics;
+
 
 
 namespace ProjetC_
@@ -11,7 +16,7 @@ namespace ProjetC_
     public partial class MainWindow : Form
     {
         private List<PasswordEntry> passwordEntries = new List<PasswordEntry>();
-
+        private string hashedPassword = string.Empty;
         private void MainWindow_Load(object sender, EventArgs e)
         {
             DisplayEntries();
@@ -21,7 +26,11 @@ namespace ProjetC_
         {
             InitializeComponent();
         }
-
+        public string HashedPassword
+        {
+            get { return hashedPassword; }
+            set { hashedPassword = value; }
+        }
         public void SetPasswordEntries(List<PasswordEntry> passwordEntries)
         {
             this.passwordEntries = passwordEntries;
@@ -77,8 +86,8 @@ namespace ProjetC_
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-             if (lstPasswords.SelectedItem != null)
-             {
+            if (lstPasswords.SelectedItem != null)
+            {
                 var selectedEntry = (PasswordEntry)lstPasswords.SelectedItem;
                     passwordEntries.Remove(selectedEntry);
                     DisplayEntries();
@@ -88,6 +97,34 @@ namespace ProjetC_
                     MessageBox.Show("Veuillez sélectionner une entrée à supprimer.", "Supprimer une entrée", MessageBoxButtons.OK, MessageBoxIcon.Information);
              }
                 
+        }
+
+        private void sauvegarderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using(SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "XML files (*.xml)|*.xml";
+                saveFileDialog.FilterIndex = 1;
+                saveFileDialog.RestoreDirectory = true;
+                if(saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    using(System.Security.Cryptography.Aes aes = System.Security.Cryptography.Aes.Create())
+                    {
+                        //Get half of the hashed password to create the key
+                        aes.Key = Encoding.UTF8.GetBytes(hashedPassword.Substring(0, hashedPassword.Length / 2));
+                        //Get quarter of the hashed password to create the initial vector
+                        aes.IV = Encoding.UTF8.GetBytes(hashedPassword.Substring(0, hashedPassword.Length / 4));
+                        XmlSerializer serializer = new XmlSerializer(typeof(List<PasswordEntry>));
+                        using (FileStream fileStream = new FileStream(saveFileDialog.FileName, FileMode.Create))
+                        {
+                            using (CryptoStream cryptoStream = new CryptoStream(fileStream, aes.CreateEncryptor(), CryptoStreamMode.Write))
+                            {
+                                serializer.Serialize(cryptoStream, passwordEntries);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

@@ -34,6 +34,7 @@
             txtbxPassword = new TextBox();
             btnLogin = new Button();
             lbl_insertPswd = new Label();
+            label1 = new Label();
             SuspendLayout();
             // 
             // lbl_choisir
@@ -88,11 +89,20 @@
             lbl_insertPswd.TabIndex = 4;
             lbl_insertPswd.Text = "SAISIR MDP";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(206, 151);
+            label1.Name = "label1";
+            label1.Size = new Size(0, 15);
+            label1.TabIndex = 5;
+            // 
             // LoginWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
             Controls.Add(lbl_insertPswd);
             Controls.Add(btnLogin);
             Controls.Add(txtbxPassword);
@@ -112,5 +122,6 @@
         private TextBox txtbxPassword;
         private Button btnLogin;
         private Label lbl_insertPswd;
+        private Label label1;
     }
 }
