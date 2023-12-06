@@ -65,9 +65,6 @@ namespace ProjetC_
                     mainWindow.Show();
                 }
 
-            }else if(filePath == string.Empty)
-            {
-                MessageBox.Show("Sélectionnez un fichier", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
