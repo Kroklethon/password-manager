@@ -8,7 +8,8 @@ using System.Xml.Serialization;
 namespace ProjetC_
 {
     public partial class MainWindow : Form
-    {   private string filePath = "passwords.xml";
+    {
+        private string filePath = "passwords.xml";
         private List<PasswordEntry> passwordEntries = new List<PasswordEntry>();
         private void MainWindow_Load(object sender, EventArgs e)
         {
@@ -36,23 +37,27 @@ namespace ProjetC_
             lstPasswords.Items.Clear();
             foreach (var entry in passwordEntries)
             {
-                ListViewItem listViewItem = lstPasswords.Items.Add(entry);
+                ListViewItem listViewItem = lstPasswords.Items.Add(entry.ToString());
             }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-           /* var addForm = new AddEntryForm();
-            if (addForm.ShowDialog() == DialogResult.OK)
+            AddEntryForm addEntryForm = new AddEntryForm();
+            if (addEntryForm.ShowDialog() == DialogResult.OK)
             {
-                passwordEntries.Add(addForm.PasswordEntry);
+                PasswordEntry passwordEntry = new PasswordEntry();
+                passwordEntry.Website = addEntryForm.txtbx_Url.ToString();
+                passwordEntry.Username = addEntryForm.txtbx_User.ToString();
+                passwordEntry.Password = addEntryForm.txtbx_Mdp.ToString();
+                passwordEntries.Add(passwordEntry);
                 DisplayEntries();
-            }*/
+            }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
-        {
-           /* if (lstPasswords.SelectedItem != null)
+        {/*
+            if (lstPasswords.SelectedItem != null)
             {
                 var selectedEntry = (PasswordEntry)lstPasswords.SelectedItem;
                 var editForm = new AddEntryForm(selectedEntry);
@@ -71,16 +76,16 @@ namespace ProjetC_
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-           /* if (lstPasswords.SelectedItem != null)
-            {
-                int selectedIndex = lstPasswords.SelectedIndex;
-                passwordEntries.RemoveAt(selectedIndex);
-                DisplayEntries();
-            }
-            else
-            {
-                MessageBox.Show("Please select an entry to remove.", "Remove Entry", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }*/
+            /* if (lstPasswords.SelectedItem != null)
+             {
+                 int selectedIndex = lstPasswords.SelectedIndex;
+                 passwordEntries.RemoveAt(selectedIndex);
+                 DisplayEntries();
+             }
+             else
+             {
+                 MessageBox.Show("Please select an entry to remove.", "Remove Entry", MessageBoxButtons.OK, MessageBoxIcon.Information);
+             }*/
         }
         public class PasswordEntry
         {
