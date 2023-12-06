@@ -20,6 +20,7 @@ namespace ProjetC_
         public AddEntryForm(PasswordEntry entry)
         {
             InitializeComponent();
+            PasswordEntry = entry;
             txtbx_Url.Text = entry.Website;
             txtbx_User.Text = entry.Username;
             txtbx_Mdp.Text = entry.Password;
