@@ -28,6 +28,8 @@ namespace ProjetC_
                     //Get the path of specified file
                     filePath = openFileDialog.FileName;
 
+                    label1.Text = filePath;
+
                     //Read the contents of the file into a stream
                     var fileStream = openFileDialog.OpenFile();
 

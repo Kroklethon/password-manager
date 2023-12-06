@@ -33,6 +33,10 @@
             btn_Edit = new Button();
             btn_Remove = new Button();
             lbl_Dbname = new Label();
+            menuStrip1 = new MenuStrip();
+            fichierToolStripMenuItem = new ToolStripMenuItem();
+            sauvegarderToolStripMenuItem = new ToolStripMenuItem();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // lstPasswords
@@ -83,6 +87,29 @@
             lbl_Dbname.TabIndex = 5;
             lbl_Dbname.Text = "My Passwords";
             // 
+            // menuStrip1
+            // 
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fichierToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(800, 24);
+            menuStrip1.TabIndex = 6;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // fichierToolStripMenuItem
+            // 
+            fichierToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { sauvegarderToolStripMenuItem });
+            fichierToolStripMenuItem.Name = "fichierToolStripMenuItem";
+            fichierToolStripMenuItem.Size = new Size(54, 20);
+            fichierToolStripMenuItem.Text = "Fichier";
+            // 
+            // sauvegarderToolStripMenuItem
+            // 
+            sauvegarderToolStripMenuItem.Name = "sauvegarderToolStripMenuItem";
+            sauvegarderToolStripMenuItem.Size = new Size(180, 22);
+            sauvegarderToolStripMenuItem.Text = "Sauvegarder";
+            sauvegarderToolStripMenuItem.Click += sauvegarderToolStripMenuItem_Click;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -93,9 +120,13 @@
             Controls.Add(btn_Remove);
             Controls.Add(btn_Edit);
             Controls.Add(btn_Add);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
             Name = "MainWindow";
             Text = "Main View";
             Load += MainWindow_Load;
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -109,5 +140,8 @@
         private Button btn_Edit;
         private Button btn_Remove;
         private Label lbl_Dbname;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem fichierToolStripMenuItem;
+        private ToolStripMenuItem sauvegarderToolStripMenuItem;
     }
 }

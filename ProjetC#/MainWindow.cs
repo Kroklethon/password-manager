@@ -42,9 +42,9 @@ namespace ProjetC_
             if (addEntryForm.ShowDialog() == DialogResult.OK)
             {
                 PasswordEntry passwordEntry = new PasswordEntry();
-                passwordEntry.Website = addEntryForm.txtbx_Url.ToString();
-                passwordEntry.Username = addEntryForm.txtbx_User.ToString();
-                passwordEntry.Password = addEntryForm.txtbx_Mdp.ToString();
+                passwordEntry.Website = addEntryForm.txtbx_Url.Text;
+                passwordEntry.Username = addEntryForm.txtbx_User.Text;
+                passwordEntry.Password = addEntryForm.txtbx_Mdp.Text;
                 passwordEntries.Add(passwordEntry);
                 DisplayEntries();
             }
@@ -73,17 +73,33 @@ namespace ProjetC_
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-             if (lstPasswords.SelectedItem != null)
-             {
+            if (lstPasswords.SelectedItem != null)
+            {
                 var selectedEntry = (PasswordEntry)lstPasswords.SelectedItem;
-                    passwordEntries.Remove(selectedEntry);
-                    DisplayEntries();
-             }
-             else
-             {
-                    MessageBox.Show("Please select an entry to remove.", "Remove Entry", MessageBoxButtons.OK, MessageBoxIcon.Information);
-             }
-                
+                passwordEntries.Remove(selectedEntry);
+                DisplayEntries();
+            }
+            else
+            {
+                MessageBox.Show("Please select an entry to remove.", "Remove Entry", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
+
+        private void sauvegarderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using(SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "xml files (*.xml)|*.xml";
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(List<PasswordEntry>));
+                    using (var stream = saveFileDialog.OpenFile())
+                    {
+                        serializer.Serialize(stream, passwordEntries);
+                    }
+                }
+            }
         }
     }
 }
