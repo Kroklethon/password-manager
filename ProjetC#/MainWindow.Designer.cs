@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            listView1 = new ListView();
+            lstPasswords = new ListView();
             SuspendLayout();
             // 
-            // listView1
+            // lstPasswords
             // 
-            listView1.Location = new Point(188, 143);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(367, 97);
-            listView1.TabIndex = 0;
-            listView1.UseCompatibleStateImageBehavior = false;
+            lstPasswords.Location = new Point(188, 143);
+            lstPasswords.Name = "lstPasswords";
+            lstPasswords.Size = new Size(367, 97);
+            lstPasswords.TabIndex = 0;
+            lstPasswords.UseCompatibleStateImageBehavior = false;
             // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(listView1);
+            Controls.Add(lstPasswords);
             Name = "MainWindow";
             Text = "Main View";
             Load += MainWindow_Load;
@@ -53,6 +53,6 @@
 
         #endregion
 
-        private ListView listView1;
+        private ListView lstPasswords;
     }
 }
