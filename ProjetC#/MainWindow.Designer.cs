@@ -28,22 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            listBox1 = new ListBox();
+            lstPasswords = new ListBox();
             btn_Add = new Button();
             btn_Edit = new Button();
             btn_Remove = new Button();
             lbl_Dbname = new Label();
             SuspendLayout();
             // 
-            // listBox1
+            // lstPasswords
             // 
-
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(176, 98);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(360, 214);
-            listBox1.TabIndex = 0;
+            lstPasswords.FormattingEnabled = true;
+            lstPasswords.ItemHeight = 15;
+            lstPasswords.Location = new Point(176, 98);
+            lstPasswords.Name = "lstPasswords";
+            lstPasswords.Size = new Size(360, 214);
+            lstPasswords.TabIndex = 0;
             // 
             // btn_Add
             // 
@@ -83,20 +82,17 @@
             lbl_Dbname.Size = new Size(82, 15);
             lbl_Dbname.TabIndex = 5;
             lbl_Dbname.Text = "My Passwords";
-
             // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-
-            Controls.Add(listBox1);
+            Controls.Add(lstPasswords);
             Controls.Add(lbl_Dbname);
             Controls.Add(btn_Remove);
             Controls.Add(btn_Edit);
             Controls.Add(btn_Add);
-
             Name = "MainWindow";
             Text = "Main View";
             Load += MainWindow_Load;
@@ -107,7 +103,7 @@
         #endregion
 
 
-        private ListBox listBox1;
+        private ListBox lstPasswords;
         private Button btn_Add;
         private Button button1;
         private Button btn_Edit;

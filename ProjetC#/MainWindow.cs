@@ -51,11 +51,12 @@ namespace ProjetC_
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
-        {/*
+        {
             if (lstPasswords.SelectedItem != null)
             {
                 var selectedEntry = (PasswordEntry)lstPasswords.SelectedItem;
                 var editForm = new AddEntryForm(selectedEntry);
+
                 if (editForm.ShowDialog() == DialogResult.OK)
                 {
                     int selectedIndex = lstPasswords.SelectedIndex;
@@ -66,7 +67,8 @@ namespace ProjetC_
             else
             {
                 MessageBox.Show("Please select an entry to edit.", "Edit Entry", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }*/
+            }
+
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
