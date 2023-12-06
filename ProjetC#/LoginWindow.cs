@@ -64,6 +64,7 @@ namespace ProjetC_
                     mainWindow.HashedPassword = hashedPassword;
                     mainWindow.Show();
                     this.Hide();
+                    mainWindow.FormClosed += (s, args) => this.Show();
                 }
 
             }

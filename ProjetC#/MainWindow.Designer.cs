@@ -106,7 +106,7 @@
             // sauvegarderToolStripMenuItem
             // 
             sauvegarderToolStripMenuItem.Name = "sauvegarderToolStripMenuItem";
-            sauvegarderToolStripMenuItem.Size = new Size(180, 22);
+            sauvegarderToolStripMenuItem.Size = new Size(139, 22);
             sauvegarderToolStripMenuItem.Text = "Sauvegarder";
             sauvegarderToolStripMenuItem.Click += sauvegarderToolStripMenuItem_Click;
             // 
@@ -124,6 +124,7 @@
             MainMenuStrip = menuStrip1;
             Name = "MainWindow";
             Text = "Main View";
+            FormClosing += MainWindow_FormClosing;
             Load += MainWindow_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

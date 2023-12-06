@@ -70,7 +70,7 @@ namespace ProjetC_
                 if (editForm.ShowDialog() == DialogResult.OK)
                 {
                     editForm.PasswordEntry.Website = editForm.txtbx_Url.Text;
-                    editForm.PasswordEntry.Username = editForm.txtbx_User.Text; 
+                    editForm.PasswordEntry.Username = editForm.txtbx_User.Text;
                     editForm.PasswordEntry.Password = editForm.txtbx_Mdp.Text;
                     int selectedIndex = lstPasswords.SelectedIndex;
                     passwordEntries[selectedIndex] = editForm.PasswordEntry;
@@ -89,26 +89,26 @@ namespace ProjetC_
             if (lstPasswords.SelectedItem != null)
             {
                 var selectedEntry = (PasswordEntry)lstPasswords.SelectedItem;
-                    passwordEntries.Remove(selectedEntry);
-                    DisplayEntries();
-             }
-             else
-             {
-                    MessageBox.Show("Veuillez sélectionner une entrée à supprimer.", "Supprimer une entrée", MessageBoxButtons.OK, MessageBoxIcon.Information);
-             }
-                
+                passwordEntries.Remove(selectedEntry);
+                DisplayEntries();
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner une entrée à supprimer.", "Supprimer une entrée", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
         }
 
         private void sauvegarderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using(SaveFileDialog saveFileDialog = new SaveFileDialog())
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
                 saveFileDialog.Filter = "XML files (*.xml)|*.xml";
                 saveFileDialog.FilterIndex = 1;
                 saveFileDialog.RestoreDirectory = true;
-                if(saveFileDialog.ShowDialog() == DialogResult.OK)
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    using(System.Security.Cryptography.Aes aes = System.Security.Cryptography.Aes.Create())
+                    using (System.Security.Cryptography.Aes aes = System.Security.Cryptography.Aes.Create())
                     {
                         //Get half of the hashed password to create the key
                         aes.Key = Encoding.UTF8.GetBytes(hashedPassword.Substring(0, hashedPassword.Length / 2));
@@ -125,6 +125,11 @@ namespace ProjetC_
                     }
                 }
             }
+        }
+
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+           
         }
     }
 }
