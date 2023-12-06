@@ -68,7 +68,6 @@
             txtbxPassword.Size = new Size(311, 23);
             txtbxPassword.TabIndex = 2;
             txtbxPassword.UseSystemPasswordChar = true;
-            txtbxPassword.TextChanged += txtbxPassword_TextChanged;
             // 
             // btnLogin
             // 
@@ -101,7 +100,6 @@
             Controls.Add(lbl_choisir);
             Name = "LoginWindow";
             Text = "Login";
-            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }

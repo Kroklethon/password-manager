@@ -9,11 +9,11 @@ namespace ProjetC_
 {
     public partial class MainWindow : Form
     {
-        private string filePath = "passwords.xml";
         private List<PasswordEntry> passwordEntries = new List<PasswordEntry>();
+
         private void MainWindow_Load(object sender, EventArgs e)
         {
-
+            //load the password entries into the list view
         }
 
         public MainWindow()
@@ -21,24 +21,19 @@ namespace ProjetC_
             InitializeComponent();
         }
 
-        // Load password entries from XML file into passwordEntries list
-        private void LoadPasswordEntriesFromXml(string filePath)
+        public void SetPasswordEntries(List<PasswordEntry> passwordEntries)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(List<PasswordEntry>));
-
-            using (TextReader reader = new StreamReader(filePath))
-            {
-                passwordEntries = (List<PasswordEntry>)serializer.Deserialize(reader);
-            }
+            this.passwordEntries = passwordEntries;
         }
 
         private void DisplayEntries()
         {
-            lstPasswords.Items.Clear();
+            /*lstPasswords.Items.Clear();
             foreach (var entry in passwordEntries)
             {
                 ListViewItem listViewItem = lstPasswords.Items.Add(entry.ToString());
-            }
+
+            }*/
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -86,17 +81,6 @@ namespace ProjetC_
              {
                  MessageBox.Show("Please select an entry to remove.", "Remove Entry", MessageBoxButtons.OK, MessageBoxIcon.Information);
              }*/
-        }
-        public class PasswordEntry
-        {
-            public string Website { get; set; }
-            public string Username { get; set; }
-            public string Password { get; set; }
-
-            public override string ToString()
-            {
-                return $"Website: {Website}, Username: {Username}, Password: {Password}";
-            }
         }
     }
 }

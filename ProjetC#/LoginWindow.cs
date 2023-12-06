@@ -1,67 +1,74 @@
 using System.Xml.Serialization;
+using System.Diagnostics;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace ProjetC_
 {
     public partial class LoginWindow : Form
     {
         private const string masterPassword = "myPass123";
-
+        private string hashedPassword = string.Empty;
+        private string filePath = string.Empty;
+        private List<PasswordEntry> passwordEntries = new List<PasswordEntry>();
         public LoginWindow()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+       
+        private void btn_OpenFile_Click(object sender, EventArgs e)
         {
 
-        }
-        private void label1_Click(object sender, EventArgs e)
-        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "xml files (*.xml)|*.xml";
 
-        }
-        private void txtbxPassword_TextChanged(object sender, EventArgs e)
-        {
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    //Get the path of specified file
+                    filePath = openFileDialog.FileName;
 
+                    //Read the contents of the file into a stream
+                    var fileStream = openFileDialog.OpenFile();
+
+                    using (StreamReader reader = new StreamReader(fileStream))
+                    {
+                        XmlSerializer serializer = new XmlSerializer(typeof(List<PasswordEntry>));
+                        passwordEntries = (List<PasswordEntry>)serializer.Deserialize(reader);
+                    }
+                }
+            }
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string enteredPassword = txtbxPassword.Text;
-
+          
             if (enteredPassword == masterPassword)
             {
+                using (SHA256 mySHA256 = SHA256.Create())
+                {
+                    byte[] bytes = mySHA256.ComputeHash(Encoding.UTF8.GetBytes(enteredPassword));
+                    StringBuilder builder = new StringBuilder();
+                    for (int i = 0; i < bytes.Length; i++)
+                    {
+                        builder.Append(bytes[i].ToString("x2"));
+                    }
+                    hashedPassword = builder.ToString();
+                }
                 MainWindow mainWindow = new MainWindow();
+                mainWindow.SetPasswordEntries(passwordEntries);
                 mainWindow.Show();
 
                 //ShowPasswordEntries();
+            }else if(filePath == string.Empty)
+            {
+                MessageBox.Show("Sélectionnez un fichier", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                MessageBox.Show("Incorrect password. Please try again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Mot de passe incorrect", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-        private void btn_OpenFile_Click(object sender, EventArgs e)
-        {
-            /*OpenFileDialog openFileDialog = new OpenFileDialog
-            {
-                Filter = "XML Files|*.xml|All Files|*.*",
-                Title = "Open Password File",
-                RestoreDirectory = true
-            };
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string filePath = openFileDialog.FileName;
-
-                try
-                {
-                    LoadPasswordEntriesFromXml(filePath);
-                    //ShowPasswordEntries();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error loading password entries: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }*/
         }
 
         private void label1_Click_1(object sender, EventArgs e)
@@ -73,14 +80,5 @@ namespace ProjetC_
         {
 
         }
-        /* private void LoadPasswordEntriesFromXml(string filePath)
-{
-XmlSerializer serializer = new XmlSerializer(typeof(List<PasswordEntry>));
-
-using (TextReader reader = new StreamReader(filePath))
-{
-passwordEntries = (List<PasswordEntry>)serializer.Deserialize(reader);
-}
-}*/
     }
 }
