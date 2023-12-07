@@ -15,7 +15,7 @@ namespace ProjetC_
             InitializeComponent();
         }
 
-       
+
         private void btn_OpenFile_Click(object sender, EventArgs e)
         {
 
@@ -29,6 +29,7 @@ namespace ProjetC_
                     filePath = openFileDialog.FileName;
 
                     label1.Text = filePath;
+                    saisirMDP();
                 }
             }
         }
@@ -54,7 +55,7 @@ namespace ProjetC_
                         catch (Exception)
                         {
                             throw new Exception("Mot de passe incorrect");
-                        }   
+                        }
                     }
                 }
             }
@@ -83,32 +84,69 @@ namespace ProjetC_
             }
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void saisirMDP()
         {
-            string enteredPassword = txtbxPassword.Text;
-            if (checkPassword(enteredPassword) || filePath == string.Empty)
+            MotDePassExistant motDePassExistant = new MotDePassExistant();
+            motDePassExistant.ShowDialog();
+            if (motDePassExistant.DialogResult == DialogResult.OK)
             {
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.SetPasswordEntries(passwordEntries);
-                mainWindow.HashedPassword = hashedPassword;
-                mainWindow.Show();
-                this.Hide();
-                mainWindow.FormClosed += (s, args) => this.Show();
+                string enteredPassword = motDePassExistant.txtbxPassword.Text;
+                if (checkPassword(enteredPassword))
+                {
+                    motDePassExistant.Close();
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.SetPasswordEntries(passwordEntries);
+                    mainWindow.HashedPassword = hashedPassword;
+                    mainWindow.Show();
+                    this.Hide();
+                    mainWindow.FormClosed += (s, args) => this.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Mot de passe incorrect", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            if (motDePassExistant.DialogResult == DialogResult.Cancel)
             {
-                MessageBox.Show("Mot de passe incorrect", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                motDePassExistant.Close();
             }
-        }
 
-        private void label1_Click_1(object sender, EventArgs e)
-        {
 
         }
-
-        private void btnLogin_Click_1(object sender, EventArgs e)
+        private void btn_new_Click(object sender, EventArgs e)
         {
-
+            MotDePassNouveau motDePassNouveau = new MotDePassNouveau();
+            motDePassNouveau.ShowDialog();
+            if (motDePassNouveau.DialogResult == DialogResult.OK)
+            {
+                if(motDePassNouveau.txtbxPassword.Text == motDePassNouveau.txtbxPassword_confirm.Text)
+                {
+                    using (SHA256 mySHA256 = SHA256.Create())
+                    {
+                        byte[] bytes = mySHA256.ComputeHash(Encoding.UTF8.GetBytes(motDePassNouveau.txtbxPassword.Text));
+                        StringBuilder builder = new StringBuilder();
+                        for (int i = 0; i < bytes.Length; i++)
+                        {
+                            builder.Append(bytes[i].ToString("x2"));
+                        }
+                        hashedPassword = builder.ToString();
+                        motDePassNouveau.Close();
+                        MainWindow mainWindow = new MainWindow();
+                        mainWindow.HashedPassword = hashedPassword;
+                        mainWindow.Show();
+                        this.Hide();
+                        mainWindow.FormClosed += (s, args) => this.Show();
+                    }
+                }
+                else
+                {
+                    motDePassNouveau.lbl_mdp_incorrect.Text = "Les mots de passe ne correspondent pas";
+                }  
+            }
+            if (motDePassNouveau.DialogResult == DialogResult.Cancel)
+            {
+                motDePassNouveau.Close();
+            }
         }
     }
 }
