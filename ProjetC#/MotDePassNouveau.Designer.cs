@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MotDePassNouveau));
             btn_Cancel = new Button();
             btn_Ok = new Button();
             txtbxPassword = new TextBox();
@@ -127,6 +128,7 @@
             Controls.Add(btn_Ok);
             Controls.Add(txtbxPassword);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MotDePassNouveau";
             Text = "Créer une nouvelle base";
             ResumeLayout(false);

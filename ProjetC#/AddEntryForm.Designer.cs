@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEntryForm));
             txtbx_User = new TextBox();
             txtbx_Mdp = new TextBox();
             txtbx_Url = new TextBox();
@@ -131,6 +132,7 @@
             Controls.Add(txtbx_Url);
             Controls.Add(txtbx_Mdp);
             Controls.Add(txtbx_User);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "AddEntryForm";
             Text = "Saisir";
             ResumeLayout(false);

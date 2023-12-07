@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginWindow));
             lbl_choisir = new Label();
             openFileDialog1 = new OpenFileDialog();
             btn_OpenFile = new Button();
@@ -38,6 +39,7 @@
             // lbl_choisir
             // 
             lbl_choisir.AutoSize = true;
+            lbl_choisir.Font = new Font("Segoe UI", 9F);
             lbl_choisir.Location = new Point(58, 41);
             lbl_choisir.Name = "lbl_choisir";
             lbl_choisir.Size = new Size(174, 15);
@@ -85,6 +87,7 @@
             Controls.Add(btn_new);
             Controls.Add(btn_OpenFile);
             Controls.Add(lbl_choisir);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "LoginWindow";
             Text = "Login";
             ResumeLayout(false);

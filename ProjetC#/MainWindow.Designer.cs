@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             lstPasswords = new ListBox();
             btn_Add = new Button();
             btn_Edit = new Button();
@@ -121,6 +122,7 @@
             Controls.Add(btn_Edit);
             Controls.Add(btn_Add);
             Controls.Add(menuStrip1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Name = "MainWindow";
             Text = "Main View";

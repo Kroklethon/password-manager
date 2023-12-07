@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MotDePassExistant));
             label1 = new Label();
             txtbxPassword = new TextBox();
             btn_Ok = new Button();
@@ -92,6 +93,7 @@
             Controls.Add(btn_Ok);
             Controls.Add(txtbxPassword);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MotDePassExistant";
             Text = "Saisir Mot de passe";
             ResumeLayout(false);
