@@ -26,7 +26,7 @@ namespace ProjetC_
                 mdpMatch = 2;
                 lbl_mdp_incorrect.Visible = true;
                 lbl_mdp_incorrect.Text = "Les mots de passe ne correspondent pas !";
-                
+
             }
             else if (String.IsNullOrWhiteSpace(txtbxPassword.Text) || String.IsNullOrWhiteSpace(txtbxPassword_confirm.Text))
             {
@@ -37,7 +37,7 @@ namespace ProjetC_
             else if (txtbxPassword.Text.Length < 8)
             {
                 mdpMatch = 4;
-                
+
                 lbl_mdp_incorrect.Text = "Le mot de passe doit contenir au moins 8 caractères !";
             }
             else
@@ -49,5 +49,11 @@ namespace ProjetC_
 
         }
 
+        // De/Affichage des mots de passe
+        private void btn_show_Click(object sender, EventArgs e)
+        {
+            txtbxPassword.UseSystemPasswordChar = !txtbxPassword.UseSystemPasswordChar;
+            txtbxPassword_confirm.UseSystemPasswordChar = !txtbxPassword_confirm.UseSystemPasswordChar;
+        }
     }
 }

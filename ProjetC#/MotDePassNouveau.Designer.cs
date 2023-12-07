@@ -35,6 +35,7 @@
             txtbxPassword_confirm = new TextBox();
             label2 = new Label();
             lbl_mdp_incorrect = new Label();
+            btn_show = new Button();
             SuspendLayout();
             // 
             // btn_Cancel
@@ -62,7 +63,6 @@
             txtbxPassword.ForeColor = SystemColors.ControlText;
             txtbxPassword.Location = new Point(27, 101);
             txtbxPassword.Name = "txtbxPassword";
-            txtbxPassword.PasswordChar = '*';
             txtbxPassword.Size = new Size(273, 23);
             txtbxPassword.TabIndex = 1;
             txtbxPassword.UseSystemPasswordChar = true;
@@ -81,7 +81,6 @@
             txtbxPassword_confirm.ForeColor = SystemColors.ControlText;
             txtbxPassword_confirm.Location = new Point(27, 182);
             txtbxPassword_confirm.Name = "txtbxPassword_confirm";
-            txtbxPassword_confirm.PasswordChar = '*';
             txtbxPassword_confirm.Size = new Size(273, 23);
             txtbxPassword_confirm.TabIndex = 4;
             txtbxPassword_confirm.UseSystemPasswordChar = true;
@@ -105,11 +104,22 @@
             lbl_mdp_incorrect.Size = new Size(0, 15);
             lbl_mdp_incorrect.TabIndex = 12;
             // 
+            // btn_show
+            // 
+            btn_show.Location = new Point(325, 145);
+            btn_show.Name = "btn_show";
+            btn_show.Size = new Size(75, 23);
+            btn_show.TabIndex = 17;
+            btn_show.Text = "Afficher";
+            btn_show.UseVisualStyleBackColor = true;
+            btn_show.Click += btn_show_Click;
+            // 
             // MotDePassNouveau
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(500, 300);
+            Controls.Add(btn_show);
             Controls.Add(lbl_mdp_incorrect);
             Controls.Add(label2);
             Controls.Add(txtbxPassword_confirm);
@@ -132,5 +142,6 @@
         public TextBox txtbxPassword_confirm;
         private Label label2;
         public Label lbl_mdp_incorrect;
+        private Button btn_show;
     }
 }
