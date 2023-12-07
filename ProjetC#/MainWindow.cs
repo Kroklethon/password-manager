@@ -42,7 +42,8 @@ namespace ProjetC_
             //load the password entries into the list box
             foreach (var entry in passwordEntries)
             {
-                ListViewItem item = new ListViewItem(entry.Website);
+                ListViewItem item = new ListViewItem(entry.Entryname);
+                item.SubItems.Add(entry.Website);
                 item.SubItems.Add(entry.Username);
                 item.SubItems.Add(entry.Password);
                 item.Tag = entry;
@@ -59,6 +60,7 @@ namespace ProjetC_
                 passwordEntry.Website = addEntryForm.txtbx_Url.Text;
                 passwordEntry.Username = addEntryForm.txtbx_User.Text;
                 passwordEntry.Password = addEntryForm.txtbx_Mdp.Text;
+                passwordEntry.Entryname = addEntryForm.txtbx_entryname.Text;
                 passwordEntries.Add(passwordEntry);
                 DisplayEntries();
             }
@@ -79,11 +81,13 @@ namespace ProjetC_
                     selectedEntry.Website = editForm.txtbx_Url.Text;
                     selectedEntry.Username = editForm.txtbx_User.Text;
                     selectedEntry.Password = editForm.txtbx_Mdp.Text;
+                    selectedEntry.Entryname = editForm.txtbx_entryname.Text;
 
                     // Update the corresponding ListViewItem in the ListView
                     lstPasswords.SelectedItems[0].SubItems[0].Text = selectedEntry.Website;
                     lstPasswords.SelectedItems[0].SubItems[1].Text = selectedEntry.Username;
                     lstPasswords.SelectedItems[0].SubItems[2].Text = selectedEntry.Password;
+
                 }
             }
             else
@@ -143,7 +147,24 @@ namespace ProjetC_
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-           
+
+        }
+
+        private void btn_show_Click(object sender, EventArgs e)
+        {
+            if (lstPasswords.SelectedItems.Count > 0)
+            {
+                AfficherMotDePasse afficherMotDePasser = new AfficherMotDePasse();
+                afficherMotDePasser.lbl_name.Text = lstPasswords.SelectedItems[0].SubItems[0].Text;
+                afficherMotDePasser.lbl_url.Text = lstPasswords.SelectedItems[0].SubItems[1].Text;
+                afficherMotDePasser.lbl_user.Text = lstPasswords.SelectedItems[0].SubItems[2].Text;
+                afficherMotDePasser.lbl_password.Text = lstPasswords.SelectedItems[0].SubItems[3].Text;
+                afficherMotDePasser.ShowDialog();
+                if (afficherMotDePasser.DialogResult == DialogResult.OK)
+                {
+                    afficherMotDePasser.Close();
+                }
+            }
         }
     }
 }

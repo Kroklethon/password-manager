@@ -24,6 +24,7 @@ namespace ProjetC_
             txtbx_Url.Text = entry.Website;
             txtbx_User.Text = entry.Username;
             txtbx_Mdp.Text = entry.Password;
+            txtbx_entryname.Text = entry.Entryname;
             btn_add.Text = "Modifier";
         }
 
