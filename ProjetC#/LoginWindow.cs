@@ -17,7 +17,7 @@ namespace ProjetC_
         }
 
 
-        private void btn_OpenFile_Click(object sender, EventArgs e)
+        private void Btn_OpenFile_Click(object sender, EventArgs e)
         {
 
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -32,12 +32,12 @@ namespace ProjetC_
                     label1.Text = filePath;
                     motDePassExistant = new MotDePassExistant();
                     motDePassExistant.Show();
-                    motDePassExistant.ButtonClicked += btn_motDePassExistant_Ok_Clicked;
+                    motDePassExistant.ButtonClicked += Btn_motDePassExistant_Ok_Clicked;
                 }
             }
         }
 
-        private void decryptFile(string hashedPassword)
+        private void DecryptFile(string hashedPassword)
         {
             using (System.Security.Cryptography.Aes aes = System.Security.Cryptography.Aes.Create())
             {
@@ -64,7 +64,7 @@ namespace ProjetC_
             }
         }
 
-        private bool checkPassword(string enteredPassword)
+        private bool CheckPassword(string enteredPassword)
         {
             using (SHA256 mySHA256 = SHA256.Create())
             {
@@ -77,7 +77,7 @@ namespace ProjetC_
                 hashedPassword = builder.ToString();
                 try
                 {
-                    decryptFile(hashedPassword);
+                    DecryptFile(hashedPassword);
                 }
                 catch (Exception)
                 {
@@ -87,10 +87,10 @@ namespace ProjetC_
             }
         }
 
-        private void btn_motDePassExistant_Ok_Clicked(object sender, EventArgs e)
+        private void Btn_motDePassExistant_Ok_Clicked(object sender, EventArgs e)
         {
             string enteredPassword = motDePassExistant.txtbxPassword.Text;
-            if (checkPassword(enteredPassword))
+            if (CheckPassword(enteredPassword))
             {
                 motDePassExistant.Close();
                 MainWindow mainWindow = new MainWindow();
@@ -105,7 +105,7 @@ namespace ProjetC_
                 MessageBox.Show("Mot de passe incorrect", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-            private void btn_new_Click(object sender, EventArgs e)
+        private void Btn_new_Click(object sender, EventArgs e)
         {
             MotDePassNouveau motDePassNouveau = new MotDePassNouveau();
             motDePassNouveau.ShowDialog();

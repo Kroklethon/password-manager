@@ -19,12 +19,12 @@ namespace ProjetC_
         }
 
         // De/Affichage du mot de passe
-        private void btn_show_Click(object sender, EventArgs e)
+        private void Btn_show_Click(object sender, EventArgs e)
         {
             txtbxPassword.UseSystemPasswordChar = !txtbxPassword.UseSystemPasswordChar;
         }
 
-        private void btn_Ok_Click(object sender, EventArgs e)
+        private void Btn_Ok_Click(object sender, EventArgs e)
         {
             ButtonClicked?.Invoke(this, EventArgs.Empty);
         }

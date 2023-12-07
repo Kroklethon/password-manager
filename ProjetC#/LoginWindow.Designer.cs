@@ -58,7 +58,7 @@
             btn_OpenFile.TabIndex = 1;
             btn_OpenFile.Text = "Choisir...";
             btn_OpenFile.UseVisualStyleBackColor = true;
-            btn_OpenFile.Click += btn_OpenFile_Click;
+            btn_OpenFile.Click += Btn_OpenFile_Click;
             // 
             // btn_new
             // 
@@ -67,7 +67,7 @@
             btn_new.Size = new Size(75, 23);
             btn_new.TabIndex = 0;
             btn_new.Text = "Nouveau";
-            btn_new.Click += btn_new_Click;
+            btn_new.Click += Btn_new_Click;
             // 
             // label1
             // 

@@ -63,7 +63,7 @@
             btn_Ok.TabIndex = 4;
             btn_Ok.Text = "OK";
             btn_Ok.UseVisualStyleBackColor = true;
-            btn_Ok.Click += btn_Ok_Click;
+            btn_Ok.Click += Btn_Ok_Click;
             // 
             // btn_Cancel
             // 
@@ -83,7 +83,7 @@
             btn_show.TabIndex = 18;
             btn_show.Text = "Afficher";
             btn_show.UseVisualStyleBackColor = true;
-            btn_show.Click += btn_show_Click;
+            btn_show.Click += Btn_show_Click;
             // 
             // MotDePassExistant
             // 

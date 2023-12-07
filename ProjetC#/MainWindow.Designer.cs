@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            lstPasswords = new ListBox();
             btn_Add = new Button();
             btn_Edit = new Button();
             btn_Remove = new Button();
@@ -37,20 +36,12 @@
             menuStrip1 = new MenuStrip();
             fichierToolStripMenuItem = new ToolStripMenuItem();
             sauvegarderToolStripMenuItem = new ToolStripMenuItem();
+            lstPasswords = new ListView();
+            coloumnUrl = new ColumnHeader();
+            columnUser = new ColumnHeader();
+            columnPassword = new ColumnHeader();
             menuStrip1.SuspendLayout();
             SuspendLayout();
-            // 
-            // lstPasswords
-            // 
-            lstPasswords.ColumnWidth = 15;
-            lstPasswords.Enabled = false;
-            lstPasswords.FormattingEnabled = true;
-            lstPasswords.ItemHeight = 15;
-            lstPasswords.Location = new Point(176, 98);
-            lstPasswords.MultiColumn = true;
-            lstPasswords.Name = "lstPasswords";
-            lstPasswords.Size = new Size(360, 214);
-            lstPasswords.TabIndex = 0;
             // 
             // btn_Add
             // 
@@ -114,6 +105,34 @@
             sauvegarderToolStripMenuItem.Text = "Sauvegarder";
             sauvegarderToolStripMenuItem.Click += sauvegarderToolStripMenuItem_Click;
             // 
+            // lstPasswords
+            // 
+            lstPasswords.Columns.AddRange(new ColumnHeader[] { coloumnUrl, columnUser, columnPassword });
+            lstPasswords.FullRowSelect = true;
+            lstPasswords.GridLines = true;
+            lstPasswords.Location = new Point(168, 109);
+            lstPasswords.MultiSelect = false;
+            lstPasswords.Name = "lstPasswords";
+            lstPasswords.Size = new Size(365, 238);
+            lstPasswords.TabIndex = 7;
+            lstPasswords.UseCompatibleStateImageBehavior = false;
+            lstPasswords.View = View.Details;
+            // 
+            // coloumnUrl
+            // 
+            coloumnUrl.Text = "URL";
+            coloumnUrl.Width = 120;
+            // 
+            // columnUser
+            // 
+            columnUser.Text = "Utilisateur";
+            columnUser.Width = 120;
+            // 
+            // columnPassword
+            // 
+            columnPassword.Text = "Password";
+            columnPassword.Width = 120;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -138,9 +157,6 @@
         }
 
         #endregion
-
-
-        private ListBox lstPasswords;
         private Button btn_Add;
         private Button button1;
         private Button btn_Edit;
@@ -149,5 +165,9 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem fichierToolStripMenuItem;
         private ToolStripMenuItem sauvegarderToolStripMenuItem;
+        private ListView lstPasswords;
+        private ColumnHeader coloumnUrl;
+        private ColumnHeader columnUser;
+        private ColumnHeader columnPassword;
     }
 }
