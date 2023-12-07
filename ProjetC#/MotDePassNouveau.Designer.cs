@@ -46,11 +46,9 @@
             btn_Cancel.TabIndex = 9;
             btn_Cancel.Text = "Cancel";
             btn_Cancel.UseVisualStyleBackColor = true;
-            btn_Cancel.Click += btn_Cancel_Click;
             // 
             // btn_Ok
             // 
-            btn_Ok.DialogResult = DialogResult.Yes;
             btn_Ok.Location = new Point(389, 256);
             btn_Ok.Name = "btn_Ok";
             btn_Ok.Size = new Size(75, 23);

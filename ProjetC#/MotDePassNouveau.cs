@@ -44,14 +44,10 @@ namespace ProjetC_
             {
                 lbl_mdp_incorrect.Visible = false;
                 mdpMatch = 1;
-                Hide();
+                DialogResult = DialogResult.OK;
             }
 
         }
 
-        private void btn_Cancel_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
     }
 }
