@@ -16,5 +16,11 @@ namespace ProjetC_
         {
             InitializeComponent();
         }
+
+        // De/Affichage du mot de passe
+        private void btn_show_Click(object sender, EventArgs e)
+        {
+            txtbxPassword.UseSystemPasswordChar = !txtbxPassword.UseSystemPasswordChar;
+        }
     }
 }

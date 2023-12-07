@@ -32,6 +32,7 @@
             txtbxPassword = new TextBox();
             btn_Ok = new Button();
             btn_Cancel = new Button();
+            btn_show = new Button();
             SuspendLayout();
             // 
             // label1
@@ -48,8 +49,7 @@
             txtbxPassword.ForeColor = SystemColors.ControlText;
             txtbxPassword.Location = new Point(55, 115);
             txtbxPassword.Name = "txtbxPassword";
-            txtbxPassword.PasswordChar = '*';
-            txtbxPassword.Size = new Size(273, 23);
+            txtbxPassword.Size = new Size(220, 23);
             txtbxPassword.TabIndex = 3;
             txtbxPassword.UseSystemPasswordChar = true;
             // 
@@ -72,11 +72,22 @@
             btn_Cancel.Text = "Cancel";
             btn_Cancel.UseVisualStyleBackColor = true;
             // 
+            // btn_show
+            // 
+            btn_show.Location = new Point(315, 114);
+            btn_show.Name = "btn_show";
+            btn_show.Size = new Size(75, 23);
+            btn_show.TabIndex = 18;
+            btn_show.Text = "Afficher";
+            btn_show.UseVisualStyleBackColor = true;
+            btn_show.Click += btn_show_Click;
+            // 
             // MotDePassExistant
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(411, 213);
+            Controls.Add(btn_show);
             Controls.Add(btn_Cancel);
             Controls.Add(btn_Ok);
             Controls.Add(txtbxPassword);
@@ -93,5 +104,6 @@
         public TextBox txtbxPassword;
         private Button btn_Ok;
         private Button btn_Cancel;
+        private Button btn_show;
     }
 }
