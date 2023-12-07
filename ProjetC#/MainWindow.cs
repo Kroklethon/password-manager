@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using System.Xml.Serialization;
 using System.Security.Cryptography;
 using System.Text;
-using System.Diagnostics;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 
@@ -42,7 +42,12 @@ namespace ProjetC_
             //load the password entries into the list box
             foreach (var entry in passwordEntries)
             {
-                lstPasswords.Items.Add(entry);
+                ListViewItem item = new ListViewItem(entry.Entryname);
+                item.SubItems.Add(entry.Website);
+                item.SubItems.Add(entry.Username);
+                item.SubItems.Add(entry.Password);
+                item.Tag = entry;
+                lstPasswords.Items.Add(item);
             }
         }
 
@@ -55,6 +60,7 @@ namespace ProjetC_
                 passwordEntry.Website = addEntryForm.txtbx_Url.Text;
                 passwordEntry.Username = addEntryForm.txtbx_User.Text;
                 passwordEntry.Password = addEntryForm.txtbx_Mdp.Text;
+                passwordEntry.Entryname = addEntryForm.txtbx_entryname.Text;
                 passwordEntries.Add(passwordEntry);
                 DisplayEntries();
             }
@@ -62,42 +68,54 @@ namespace ProjetC_
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (lstPasswords.SelectedItem != null)
+            if (lstPasswords.SelectedItems.Count > 0)
             {
-                var selectedEntry = (PasswordEntry)lstPasswords.SelectedItem;
+                // Assuming that each ListViewItem's Tag property holds a PasswordEntry object
+                var selectedEntry = (PasswordEntry)lstPasswords.SelectedItems[0].Tag;
+
                 var editForm = new AddEntryForm(selectedEntry);
 
                 if (editForm.ShowDialog() == DialogResult.OK)
                 {
-                    editForm.PasswordEntry.Website = editForm.txtbx_Url.Text;
-                    editForm.PasswordEntry.Username = editForm.txtbx_User.Text;
-                    editForm.PasswordEntry.Password = editForm.txtbx_Mdp.Text;
-                    int selectedIndex = lstPasswords.SelectedIndex;
-                    passwordEntries[selectedIndex] = editForm.PasswordEntry;
-                    DisplayEntries();
+                    // Update the selected PasswordEntry with values from the edit form
+                    selectedEntry.Website = editForm.txtbx_Url.Text;
+                    selectedEntry.Username = editForm.txtbx_User.Text;
+                    selectedEntry.Password = editForm.txtbx_Mdp.Text;
+                    selectedEntry.Entryname = editForm.txtbx_entryname.Text;
+
+                    // Update the corresponding ListViewItem in the ListView
+                    lstPasswords.SelectedItems[0].SubItems[0].Text = selectedEntry.Website;
+                    lstPasswords.SelectedItems[0].SubItems[1].Text = selectedEntry.Username;
+                    lstPasswords.SelectedItems[0].SubItems[2].Text = selectedEntry.Password;
+
                 }
             }
             else
             {
                 MessageBox.Show("Veuillez sélectionner une entrée à modifier.", "Modifier une entrée", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
         }
+
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            if (lstPasswords.SelectedItem != null)
+            if (lstPasswords.SelectedItems.Count > 0)
             {
-                var selectedEntry = (PasswordEntry)lstPasswords.SelectedItem;
+                // Assuming that each ListViewItem's Tag property holds a PasswordEntry object
+                var selectedEntry = (PasswordEntry)lstPasswords.SelectedItems[0].Tag;
+
+                // Remove the selected PasswordEntry from the list
                 passwordEntries.Remove(selectedEntry);
-                DisplayEntries();
+
+                // Remove the selected ListViewItem from the ListView
+                lstPasswords.Items.Remove(lstPasswords.SelectedItems[0]);
             }
             else
             {
                 MessageBox.Show("Veuillez sélectionner une entrée à supprimer.", "Supprimer une entrée", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
         }
+
 
         private void sauvegarderToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -129,7 +147,24 @@ namespace ProjetC_
 
         private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
-           
+
+        }
+
+        private void btn_show_Click(object sender, EventArgs e)
+        {
+            if (lstPasswords.SelectedItems.Count > 0)
+            {
+                AfficherMotDePasse afficherMotDePasser = new AfficherMotDePasse();
+                afficherMotDePasser.lbl_name.Text = lstPasswords.SelectedItems[0].SubItems[0].Text;
+                afficherMotDePasser.lbl_url.Text = lstPasswords.SelectedItems[0].SubItems[1].Text;
+                afficherMotDePasser.lbl_user.Text = lstPasswords.SelectedItems[0].SubItems[2].Text;
+                afficherMotDePasser.lbl_password.Text = lstPasswords.SelectedItems[0].SubItems[3].Text;
+                afficherMotDePasser.ShowDialog();
+                if (afficherMotDePasser.DialogResult == DialogResult.OK)
+                {
+                    afficherMotDePasser.Close();
+                }
+            }
         }
     }
 }

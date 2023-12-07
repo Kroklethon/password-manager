@@ -7,6 +7,7 @@ namespace ProjetC_
 {
     public partial class LoginWindow : Form
     {
+        MotDePassExistant motDePassExistant;
         private string hashedPassword = string.Empty;
         private string filePath = string.Empty;
         private List<PasswordEntry> passwordEntries = new List<PasswordEntry>();
@@ -15,8 +16,8 @@ namespace ProjetC_
             InitializeComponent();
         }
 
-       
-        private void btn_OpenFile_Click(object sender, EventArgs e)
+
+        private void Btn_OpenFile_Click(object sender, EventArgs e)
         {
 
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -29,11 +30,14 @@ namespace ProjetC_
                     filePath = openFileDialog.FileName;
 
                     label1.Text = filePath;
+                    motDePassExistant = new MotDePassExistant();
+                    motDePassExistant.Show();
+                    motDePassExistant.ButtonClicked += Btn_motDePassExistant_Ok_Clicked;
                 }
             }
         }
 
-        private void decryptFile(string hashedPassword)
+        private void DecryptFile(string hashedPassword)
         {
             using (System.Security.Cryptography.Aes aes = System.Security.Cryptography.Aes.Create())
             {
@@ -54,13 +58,13 @@ namespace ProjetC_
                         catch (Exception)
                         {
                             throw new Exception("Mot de passe incorrect");
-                        }   
+                        }
                     }
                 }
             }
         }
 
-        private bool checkPassword(string enteredPassword)
+        private bool CheckPassword(string enteredPassword)
         {
             using (SHA256 mySHA256 = SHA256.Create())
             {
@@ -73,7 +77,7 @@ namespace ProjetC_
                 hashedPassword = builder.ToString();
                 try
                 {
-                    decryptFile(hashedPassword);
+                    DecryptFile(hashedPassword);
                 }
                 catch (Exception)
                 {
@@ -83,11 +87,12 @@ namespace ProjetC_
             }
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void Btn_motDePassExistant_Ok_Clicked(object sender, EventArgs e)
         {
-            string enteredPassword = txtbxPassword.Text;
-            if (checkPassword(enteredPassword) || filePath == string.Empty)
+            string enteredPassword = motDePassExistant.txtbxPassword.Text;
+            if (CheckPassword(enteredPassword))
             {
+                motDePassExistant.Close();
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.SetPasswordEntries(passwordEntries);
                 mainWindow.HashedPassword = hashedPassword;
@@ -100,14 +105,34 @@ namespace ProjetC_
                 MessageBox.Show("Mot de passe incorrect", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void label1_Click_1(object sender, EventArgs e)
+        private void Btn_new_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void btnLogin_Click_1(object sender, EventArgs e)
-        {
+            MotDePassNouveau motDePassNouveau = new MotDePassNouveau();
+            motDePassNouveau.ShowDialog();
+            if(motDePassNouveau.DialogResult == DialogResult.OK)
+                if (motDePassNouveau.mdpMatch == 1)
+                {
+                    using (SHA256 mySHA256 = SHA256.Create())
+                    {
+                        byte[] bytes = mySHA256.ComputeHash(Encoding.UTF8.GetBytes(motDePassNouveau.txtbxPassword.Text));
+                        StringBuilder builder = new StringBuilder();
+                        for (int i = 0; i < bytes.Length; i++)
+                        {
+                            builder.Append(bytes[i].ToString("x2"));
+                        }
+                        hashedPassword = builder.ToString();
+                        motDePassNouveau.Close();
+                        MainWindow mainWindow = new MainWindow();
+                        mainWindow.HashedPassword = hashedPassword;
+                        mainWindow.Show();
+                        this.Hide();
+                        mainWindow.FormClosed += (s, args) => this.Show();
+                    }
+                } 
+            if(motDePassNouveau.DialogResult == DialogResult.Cancel)
+            {
+                motDePassNouveau.Close();
+            }
 
         }
     }

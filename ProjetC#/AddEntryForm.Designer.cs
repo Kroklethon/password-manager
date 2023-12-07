@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEntryForm));
             txtbx_User = new TextBox();
             txtbx_Mdp = new TextBox();
             txtbx_Url = new TextBox();
@@ -37,25 +38,27 @@
             btn_add = new Button();
             btn_Cancel = new Button();
             button1 = new Button();
+            txtbx_entryname = new TextBox();
+            label1 = new Label();
             SuspendLayout();
             // 
             // txtbx_User
             // 
-            txtbx_User.Location = new Point(123, 105);
+            txtbx_User.Location = new Point(112, 121);
             txtbx_User.Name = "txtbx_User";
             txtbx_User.Size = new Size(100, 23);
             txtbx_User.TabIndex = 0;
             // 
             // txtbx_Mdp
             // 
-            txtbx_Mdp.Location = new Point(123, 153);
+            txtbx_Mdp.Location = new Point(112, 169);
             txtbx_Mdp.Name = "txtbx_Mdp";
             txtbx_Mdp.Size = new Size(100, 23);
             txtbx_Mdp.TabIndex = 1;
             // 
             // txtbx_Url
             // 
-            txtbx_Url.Location = new Point(123, 54);
+            txtbx_Url.Location = new Point(112, 70);
             txtbx_Url.Name = "txtbx_Url";
             txtbx_Url.Size = new Size(100, 23);
             txtbx_Url.TabIndex = 2;
@@ -63,7 +66,7 @@
             // lbl_url
             // 
             lbl_url.AutoSize = true;
-            lbl_url.Location = new Point(89, 62);
+            lbl_url.Location = new Point(78, 78);
             lbl_url.Name = "lbl_url";
             lbl_url.Size = new Size(28, 15);
             lbl_url.TabIndex = 3;
@@ -72,7 +75,7 @@
             // lbl_User
             // 
             lbl_User.AutoSize = true;
-            lbl_User.Location = new Point(57, 108);
+            lbl_User.Location = new Point(46, 124);
             lbl_User.Name = "lbl_User";
             lbl_User.Size = new Size(60, 15);
             lbl_User.TabIndex = 4;
@@ -81,7 +84,7 @@
             // lbl_Mdp
             // 
             lbl_Mdp.AutoSize = true;
-            lbl_Mdp.Location = new Point(40, 153);
+            lbl_Mdp.Location = new Point(29, 169);
             lbl_Mdp.Name = "lbl_Mdp";
             lbl_Mdp.Size = new Size(77, 15);
             lbl_Mdp.TabIndex = 5;
@@ -117,11 +120,29 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // txtbx_entryname
+            // 
+            txtbx_entryname.Location = new Point(112, 23);
+            txtbx_entryname.Name = "txtbx_entryname";
+            txtbx_entryname.Size = new Size(100, 23);
+            txtbx_entryname.TabIndex = 9;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 26);
+            label1.Name = "label1";
+            label1.Size = new Size(92, 15);
+            label1.TabIndex = 10;
+            label1.Text = "Nom de l'entrée";
+            // 
             // AddEntryForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(452, 243);
+            Controls.Add(label1);
+            Controls.Add(txtbx_entryname);
             Controls.Add(button1);
             Controls.Add(btn_Cancel);
             Controls.Add(btn_add);
@@ -131,6 +152,7 @@
             Controls.Add(txtbx_Url);
             Controls.Add(txtbx_Mdp);
             Controls.Add(txtbx_User);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "AddEntryForm";
             Text = "Saisir";
             ResumeLayout(false);
@@ -147,5 +169,7 @@
         public TextBox txtbx_Mdp;
         public TextBox txtbx_Url;
         private Button button1;
+        public TextBox txtbx_entryname;
+        private Label label1;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PasswordGenerator));
             checkbx_min = new CheckBox();
             checkbx_spec = new CheckBox();
             checkbx_num = new CheckBox();
@@ -164,6 +165,7 @@
             Controls.Add(checkbx_num);
             Controls.Add(checkbx_spec);
             Controls.Add(checkbx_min);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "PasswordGenerator";
             Text = "Generateur de mot de passe";
             ((System.ComponentModel.ISupportInitialize)numPick).EndInit();

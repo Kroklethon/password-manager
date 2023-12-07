@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginWindow));
             lbl_choisir = new Label();
             openFileDialog1 = new OpenFileDialog();
             btn_OpenFile = new Button();
-            txtbxPassword = new TextBox();
-            btnLogin = new Button();
-            lbl_insertPswd = new Label();
+            btn_new = new Button();
             label1 = new Label();
             SuspendLayout();
             // 
             // lbl_choisir
             // 
             lbl_choisir.AutoSize = true;
-            lbl_choisir.Location = new Point(203, 91);
+            lbl_choisir.Font = new Font("Segoe UI", 9F);
+            lbl_choisir.Location = new Point(58, 41);
             lbl_choisir.Name = "lbl_choisir";
             lbl_choisir.Size = new Size(174, 15);
             lbl_choisir.TabIndex = 0;
@@ -52,62 +52,42 @@
             // 
             // btn_OpenFile
             // 
-            btn_OpenFile.Location = new Point(533, 151);
+            btn_OpenFile.Location = new Point(282, 41);
             btn_OpenFile.Name = "btn_OpenFile";
             btn_OpenFile.Size = new Size(75, 23);
             btn_OpenFile.TabIndex = 1;
             btn_OpenFile.Text = "Choisir...";
             btn_OpenFile.UseVisualStyleBackColor = true;
-            btn_OpenFile.Click += btn_OpenFile_Click;
+            btn_OpenFile.Click += Btn_OpenFile_Click;
             // 
-            // txtbxPassword
+            // btn_new
             // 
-            txtbxPassword.ForeColor = SystemColors.ControlText;
-            txtbxPassword.Location = new Point(206, 238);
-            txtbxPassword.Name = "txtbxPassword";
-            txtbxPassword.PasswordChar = '*';
-            txtbxPassword.Size = new Size(311, 23);
-            txtbxPassword.TabIndex = 2;
-            txtbxPassword.UseSystemPasswordChar = true;
-            // 
-            // btnLogin
-            // 
-            btnLogin.Location = new Point(533, 297);
-            btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(75, 23);
-            btnLogin.TabIndex = 3;
-            btnLogin.Text = "Login";
-            btnLogin.UseVisualStyleBackColor = true;
-            btnLogin.Click += btnLogin_Click;
-            // 
-            // lbl_insertPswd
-            // 
-            lbl_insertPswd.AutoSize = true;
-            lbl_insertPswd.Location = new Point(203, 207);
-            lbl_insertPswd.Name = "lbl_insertPswd";
-            lbl_insertPswd.Size = new Size(69, 15);
-            lbl_insertPswd.TabIndex = 4;
-            lbl_insertPswd.Text = "SAISIR MDP";
+            btn_new.Location = new Point(282, 117);
+            btn_new.Name = "btn_new";
+            btn_new.Size = new Size(75, 23);
+            btn_new.TabIndex = 0;
+            btn_new.Text = "Nouveau";
+            btn_new.Click += Btn_new_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(206, 151);
+            label1.Location = new Point(58, 82);
             label1.Name = "label1";
-            label1.Size = new Size(0, 15);
-            label1.TabIndex = 5;
+            label1.Size = new Size(31, 15);
+            label1.TabIndex = 2;
+            label1.Text = "Path";
             // 
             // LoginWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(417, 166);
             Controls.Add(label1);
-            Controls.Add(lbl_insertPswd);
-            Controls.Add(btnLogin);
-            Controls.Add(txtbxPassword);
+            Controls.Add(btn_new);
             Controls.Add(btn_OpenFile);
             Controls.Add(lbl_choisir);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "LoginWindow";
             Text = "Login";
             ResumeLayout(false);
@@ -119,9 +99,7 @@
         private Label lbl_choisir;
         private OpenFileDialog openFileDialog1;
         private Button btn_OpenFile;
-        private TextBox txtbxPassword;
-        private Button btnLogin;
-        private Label lbl_insertPswd;
+        private Button btn_new;
         private Label label1;
     }
 }
