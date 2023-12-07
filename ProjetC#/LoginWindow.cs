@@ -7,6 +7,7 @@ namespace ProjetC_
 {
     public partial class LoginWindow : Form
     {
+        MotDePassExistant motDePassExistant;
         private string hashedPassword = string.Empty;
         private string filePath = string.Empty;
         private List<PasswordEntry> passwordEntries = new List<PasswordEntry>();
@@ -29,7 +30,9 @@ namespace ProjetC_
                     filePath = openFileDialog.FileName;
 
                     label1.Text = filePath;
-                    saisirMDP();
+                    motDePassExistant = new MotDePassExistant();
+                    motDePassExistant.Show();
+                    motDePassExistant.ButtonClicked += btn_motDePassExistant_Ok_Clicked;
                 }
             }
         }
@@ -84,36 +87,25 @@ namespace ProjetC_
             }
         }
 
-        private void saisirMDP()
+        private void btn_motDePassExistant_Ok_Clicked(object sender, EventArgs e)
         {
-            MotDePassExistant motDePassExistant = new MotDePassExistant();
-            motDePassExistant.ShowDialog();
-            if (motDePassExistant.DialogResult == DialogResult.OK)
-            {
-                string enteredPassword = motDePassExistant.txtbxPassword.Text;
-                if (checkPassword(enteredPassword))
-                {
-                    motDePassExistant.Close();
-                    MainWindow mainWindow = new MainWindow();
-                    mainWindow.SetPasswordEntries(passwordEntries);
-                    mainWindow.HashedPassword = hashedPassword;
-                    mainWindow.Show();
-                    this.Hide();
-                    mainWindow.FormClosed += (s, args) => this.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Mot de passe incorrect", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            if (motDePassExistant.DialogResult == DialogResult.Cancel)
+            string enteredPassword = motDePassExistant.txtbxPassword.Text;
+            if (checkPassword(enteredPassword))
             {
                 motDePassExistant.Close();
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.SetPasswordEntries(passwordEntries);
+                mainWindow.HashedPassword = hashedPassword;
+                mainWindow.Show();
+                this.Hide();
+                mainWindow.FormClosed += (s, args) => this.Show();
             }
-
-
+            else
+            {
+                MessageBox.Show("Mot de passe incorrect", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-        private void btn_new_Click(object sender, EventArgs e)
+            private void btn_new_Click(object sender, EventArgs e)
         {
             MotDePassNouveau motDePassNouveau = new MotDePassNouveau();
             motDePassNouveau.ShowDialog();

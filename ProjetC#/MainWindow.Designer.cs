@@ -42,9 +42,12 @@
             // 
             // lstPasswords
             // 
+            lstPasswords.ColumnWidth = 15;
+            lstPasswords.Enabled = false;
             lstPasswords.FormattingEnabled = true;
             lstPasswords.ItemHeight = 15;
             lstPasswords.Location = new Point(176, 98);
+            lstPasswords.MultiColumn = true;
             lstPasswords.Name = "lstPasswords";
             lstPasswords.Size = new Size(360, 214);
             lstPasswords.TabIndex = 0;

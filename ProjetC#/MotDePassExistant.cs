@@ -12,6 +12,7 @@ namespace ProjetC_
 {
     public partial class MotDePassExistant : Form
     {
+        public event EventHandler ButtonClicked;
         public MotDePassExistant()
         {
             InitializeComponent();
@@ -21,6 +22,11 @@ namespace ProjetC_
         private void btn_show_Click(object sender, EventArgs e)
         {
             txtbxPassword.UseSystemPasswordChar = !txtbxPassword.UseSystemPasswordChar;
+        }
+
+        private void btn_Ok_Click(object sender, EventArgs e)
+        {
+            ButtonClicked?.Invoke(this, EventArgs.Empty);
         }
     }
 }
