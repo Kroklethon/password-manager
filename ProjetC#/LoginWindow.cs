@@ -116,37 +116,28 @@ namespace ProjetC_
         private void btn_new_Click(object sender, EventArgs e)
         {
             MotDePassNouveau motDePassNouveau = new MotDePassNouveau();
-            motDePassNouveau.ShowDialog();
-            if (motDePassNouveau.DialogResult == DialogResult.OK)
+            motDePassNouveau.Show();
+            if (motDePassNouveau.mdpMatch == 1)
             {
-                if(motDePassNouveau.txtbxPassword.Text == motDePassNouveau.txtbxPassword_confirm.Text)
+                using (SHA256 mySHA256 = SHA256.Create())
                 {
-                    using (SHA256 mySHA256 = SHA256.Create())
+                    byte[] bytes = mySHA256.ComputeHash(Encoding.UTF8.GetBytes(motDePassNouveau.txtbxPassword.Text));
+                    StringBuilder builder = new StringBuilder();
+                    for (int i = 0; i < bytes.Length; i++)
                     {
-                        byte[] bytes = mySHA256.ComputeHash(Encoding.UTF8.GetBytes(motDePassNouveau.txtbxPassword.Text));
-                        StringBuilder builder = new StringBuilder();
-                        for (int i = 0; i < bytes.Length; i++)
-                        {
-                            builder.Append(bytes[i].ToString("x2"));
-                        }
-                        hashedPassword = builder.ToString();
-                        motDePassNouveau.Close();
-                        MainWindow mainWindow = new MainWindow();
-                        mainWindow.HashedPassword = hashedPassword;
-                        mainWindow.Show();
-                        this.Hide();
-                        mainWindow.FormClosed += (s, args) => this.Show();
+                        builder.Append(bytes[i].ToString("x2"));
                     }
+                    hashedPassword = builder.ToString();
+                    motDePassNouveau.Close();
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.HashedPassword = hashedPassword;
+                    mainWindow.Show();
+                    this.Hide();
+                    mainWindow.FormClosed += (s, args) => this.Show();
                 }
-                else
-                {
-                    motDePassNouveau.lbl_mdp_incorrect.Text = "Les mots de passe ne correspondent pas";
-                }  
-            }
-            if (motDePassNouveau.DialogResult == DialogResult.Cancel)
-            {
-                motDePassNouveau.Close();
-            }
+            } 
+         
+
         }
     }
 }

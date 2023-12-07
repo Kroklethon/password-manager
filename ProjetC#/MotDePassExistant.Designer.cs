@@ -55,7 +55,6 @@
             // 
             // btn_Ok
             // 
-            btn_Ok.DialogResult = DialogResult.OK;
             btn_Ok.Location = new Point(315, 163);
             btn_Ok.Name = "btn_Ok";
             btn_Ok.Size = new Size(75, 23);
