@@ -7,7 +7,7 @@ namespace ProjetC_
 {
     public partial class LoginWindow : Form
     {
-        private const string masterPassword = "myPass123";
+        private string hashedPassword = string.Empty;
         private string filePath = string.Empty;
         private List<PasswordEntry> passwordEntries = new List<PasswordEntry>();
         public LoginWindow()
@@ -70,7 +70,7 @@ namespace ProjetC_
                 {
                     builder.Append(bytes[i].ToString("x2"));
                 }
-                string hashedPassword = builder.ToString();
+                hashedPassword = builder.ToString();
                 try
                 {
                     decryptFile(hashedPassword);
@@ -86,14 +86,14 @@ namespace ProjetC_
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string enteredPassword = txtbxPassword.Text;
-            string hashedPassword = string.Empty;
-            if (checkPassword(enteredPassword))
+            if (checkPassword(enteredPassword) || filePath == string.Empty)
             {
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.SetPasswordEntries(passwordEntries);
                 mainWindow.HashedPassword = hashedPassword;
                 mainWindow.Show();
                 this.Hide();
+                mainWindow.FormClosed += (s, args) => this.Show();
             }
             else
             {
