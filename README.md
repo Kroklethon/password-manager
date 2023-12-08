@@ -8,4 +8,5 @@ Particulièrement soucieux par l’optimisation et la sécurité des données no
 
 Celui-ci s'articule sur plusieurs axes:
 - Génération de mot de passe
-- Stockage et chiffrage du mot de passe 
+- Stockage
+- Chiffrage du mot de passe 
