@@ -1,5 +1,5 @@
 # ProjetC#
-Nous sommes un groupe de 3 étudiants en cybersécurité à l’Université Lumière Lyon 2 et dans le cadre de notre cours de C# présidé par Mr Rakotomalala nous avons dû réfléchir à un projet à développer et à mettre en place.
+Nous sommes un groupe de 3 étudiants en cybersécurité à l’Université Lumière Lyon 2, dans le cadre de notre cours de C# présidé par Mr Rakotomalala nous avons dû réfléchir à un projet à développer et à mettre en place.
 
 Les contraintes étant :
 -	Que le projet soit codé en C#
