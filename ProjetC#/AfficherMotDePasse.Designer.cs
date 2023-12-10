@@ -115,7 +115,7 @@
             btn_ok.Location = new Point(307, 169);
             btn_ok.Name = "btn_ok";
             btn_ok.Size = new Size(75, 23);
-            btn_ok.TabIndex = 8;
+            btn_ok.TabIndex = 9;
             btn_ok.Text = "OK";
             btn_ok.UseVisualStyleBackColor = true;
             // 
@@ -124,7 +124,7 @@
             btn_copy.Location = new Point(47, 169);
             btn_copy.Name = "btn_copy";
             btn_copy.Size = new Size(138, 23);
-            btn_copy.TabIndex = 9;
+            btn_copy.TabIndex = 8;
             btn_copy.Text = "Copier Mot de Passe";
             btn_copy.UseVisualStyleBackColor = true;
             btn_copy.Click += Btn_copy_Click;

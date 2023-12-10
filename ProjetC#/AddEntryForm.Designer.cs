@@ -47,14 +47,14 @@
             txtbx_User.Location = new Point(112, 121);
             txtbx_User.Name = "txtbx_User";
             txtbx_User.Size = new Size(100, 23);
-            txtbx_User.TabIndex = 0;
+            txtbx_User.TabIndex = 3;
             // 
             // txtbx_Mdp
             // 
             txtbx_Mdp.Location = new Point(112, 169);
             txtbx_Mdp.Name = "txtbx_Mdp";
             txtbx_Mdp.Size = new Size(100, 23);
-            txtbx_Mdp.TabIndex = 1;
+            txtbx_Mdp.TabIndex = 4;
             // 
             // txtbx_Url
             // 
@@ -96,7 +96,7 @@
             btn_add.Location = new Point(347, 208);
             btn_add.Name = "btn_add";
             btn_add.Size = new Size(75, 23);
-            btn_add.TabIndex = 6;
+            btn_add.TabIndex = 7;
             btn_add.Text = "Ajouter";
             btn_add.UseVisualStyleBackColor = true;
             // 
@@ -106,7 +106,7 @@
             btn_Cancel.Location = new Point(242, 208);
             btn_Cancel.Name = "btn_Cancel";
             btn_Cancel.Size = new Size(75, 23);
-            btn_Cancel.TabIndex = 7;
+            btn_Cancel.TabIndex = 8;
             btn_Cancel.Text = "Cancel";
             btn_Cancel.UseVisualStyleBackColor = true;
             // 
@@ -115,7 +115,7 @@
             btn_generate.Location = new Point(242, 140);
             btn_generate.Name = "btn_generate";
             btn_generate.Size = new Size(132, 47);
-            btn_generate.TabIndex = 8;
+            btn_generate.TabIndex = 6;
             btn_generate.Text = "Generer un mot de passe";
             btn_generate.UseVisualStyleBackColor = true;
             btn_generate.Click += btn_generate_Click;
@@ -125,7 +125,7 @@
             txtbx_entryname.Location = new Point(112, 23);
             txtbx_entryname.Name = "txtbx_entryname";
             txtbx_entryname.Size = new Size(100, 23);
-            txtbx_entryname.TabIndex = 9;
+            txtbx_entryname.TabIndex = 1;
             // 
             // label1
             // 
