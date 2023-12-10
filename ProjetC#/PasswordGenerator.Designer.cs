@@ -74,7 +74,7 @@
             checkbx_num.Location = new Point(53, 106);
             checkbx_num.Name = "checkbx_num";
             checkbx_num.Size = new Size(75, 19);
-            checkbx_num.TabIndex = 5;
+            checkbx_num.TabIndex = 3;
             checkbx_num.Text = "Numéros";
             checkbx_num.UseVisualStyleBackColor = true;
             // 
@@ -86,7 +86,7 @@
             checkbx_max.Location = new Point(53, 81);
             checkbx_max.Name = "checkbx_max";
             checkbx_max.Size = new Size(85, 19);
-            checkbx_max.TabIndex = 6;
+            checkbx_max.TabIndex = 2;
             checkbx_max.Text = "Majuscules";
             checkbx_max.UseVisualStyleBackColor = true;
             // 
@@ -97,7 +97,7 @@
             numPick.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numPick.Name = "numPick";
             numPick.Size = new Size(120, 23);
-            numPick.TabIndex = 7;
+            numPick.TabIndex = 5;
             numPick.Value = new decimal(new int[] { 16, 0, 0, 0 });
             // 
             // lnl_length
@@ -126,7 +126,7 @@
             button1.Location = new Point(217, 228);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
-            button1.TabIndex = 10;
+            button1.TabIndex = 8;
             button1.Text = "Cancel";
             button1.UseVisualStyleBackColor = true;
             // 
@@ -136,7 +136,7 @@
             btn_ok.Location = new Point(322, 228);
             btn_ok.Name = "btn_ok";
             btn_ok.Size = new Size(75, 23);
-            btn_ok.TabIndex = 11;
+            btn_ok.TabIndex = 7;
             btn_ok.Text = "OK";
             btn_ok.UseVisualStyleBackColor = true;
             // 
@@ -145,7 +145,7 @@
             btn_go.Location = new Point(260, 171);
             btn_go.Name = "btn_go";
             btn_go.Size = new Size(75, 23);
-            btn_go.TabIndex = 12;
+            btn_go.TabIndex = 6;
             btn_go.Text = "GO!";
             btn_go.UseVisualStyleBackColor = true;
             btn_go.Click += btn_go_Click;
