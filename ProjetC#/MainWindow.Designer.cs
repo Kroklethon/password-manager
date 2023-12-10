@@ -165,7 +165,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Name = "MainWindow";
-            Text = "Main View";
+            Text = "Gestionnaire de mot de passe";
             FormClosing += MainWindow_FormClosing;
             Load += MainWindow_Load;
             menuStrip1.ResumeLayout(false);
