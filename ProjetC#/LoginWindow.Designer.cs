@@ -43,7 +43,7 @@
             lbl_choisir.Location = new Point(58, 41);
             lbl_choisir.Name = "lbl_choisir";
             lbl_choisir.Size = new Size(174, 15);
-            lbl_choisir.TabIndex = 0;
+            lbl_choisir.TabIndex = 16;
             lbl_choisir.Text = "Choisir fichier de Mots de Passe";
             // 
             // openFileDialog1
@@ -65,7 +65,7 @@
             btn_new.Location = new Point(282, 117);
             btn_new.Name = "btn_new";
             btn_new.Size = new Size(75, 23);
-            btn_new.TabIndex = 0;
+            btn_new.TabIndex = 2;
             btn_new.Text = "Nouveau";
             btn_new.Click += Btn_new_Click;
             // 
@@ -75,7 +75,7 @@
             label1.Location = new Point(58, 82);
             label1.Name = "label1";
             label1.Size = new Size(31, 15);
-            label1.TabIndex = 2;
+            label1.TabIndex = 17;
             label1.Text = "Path";
             label1.Visible = false;
             // 
