@@ -37,7 +37,7 @@
             lbl_Mdp = new Label();
             btn_add = new Button();
             btn_Cancel = new Button();
-            button1 = new Button();
+            btn_generate = new Button();
             txtbx_entryname = new TextBox();
             label1 = new Label();
             SuspendLayout();
@@ -110,15 +110,15 @@
             btn_Cancel.Text = "Cancel";
             btn_Cancel.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btn_generate
             // 
-            button1.Location = new Point(242, 140);
-            button1.Name = "button1";
-            button1.Size = new Size(132, 47);
-            button1.TabIndex = 8;
-            button1.Text = "Generer un mot de passe";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btn_generate.Location = new Point(242, 140);
+            btn_generate.Name = "btn_generate";
+            btn_generate.Size = new Size(132, 47);
+            btn_generate.TabIndex = 8;
+            btn_generate.Text = "Generer un mot de passe";
+            btn_generate.UseVisualStyleBackColor = true;
+            btn_generate.Click += btn_generate_Click;
             // 
             // txtbx_entryname
             // 
@@ -143,7 +143,7 @@
             ClientSize = new Size(452, 243);
             Controls.Add(label1);
             Controls.Add(txtbx_entryname);
-            Controls.Add(button1);
+            Controls.Add(btn_generate);
             Controls.Add(btn_Cancel);
             Controls.Add(btn_add);
             Controls.Add(lbl_Mdp);
@@ -168,7 +168,7 @@
         public TextBox txtbx_User;
         public TextBox txtbx_Mdp;
         public TextBox txtbx_Url;
-        private Button button1;
+        private Button btn_generate;
         public TextBox txtbx_entryname;
         private Label label1;
     }

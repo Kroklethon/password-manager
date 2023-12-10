@@ -42,5 +42,30 @@ namespace ProjetC_
             label1.Text = password.ToString();
 
         }
+        public void generator()
+        {
+            string characters = "";
+            int passwordLength = int.Parse(numPick.Value.ToString());
+            Random random = new Random();
+            StringBuilder password = new StringBuilder(passwordLength);
+            // Ajouter les caractères à la string characters
+            if (checkbx_min.Checked) { characters = characters + "abcdefghijklmnopqrstuvwxyz"; }
+            if (checkbx_max.Checked) { characters = characters + "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; }
+            if (checkbx_num.Checked) { characters = characters + "0123456789"; }
+            if (checkbx_spec.Checked) { characters = characters + "!@#$%^&*()-_+=<>?"; }
+            if (checkbx_min.Checked == false && checkbx_max.Checked == false && checkbx_num.Checked == false && checkbx_spec.Checked == false)
+            {
+                MessageBox.Show("Veuillez sélectionner au moins une option");
+            }
+            Debug.WriteLine(characters);
+            // Générer le mot de passe
+            for (int i = 0; i < passwordLength; i++)
+            {
+                int index = random.Next(characters.Length);
+                password.Append(characters[index]);
+            }
+            label1.Text = password.ToString();
+        }
+            
     }
 }

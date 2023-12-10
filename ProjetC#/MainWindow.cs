@@ -84,9 +84,10 @@ namespace ProjetC_
                     selectedEntry.Entryname = editForm.txtbx_entryname.Text;
 
                     // Update the corresponding ListViewItem in the ListView
-                    lstPasswords.SelectedItems[0].SubItems[0].Text = selectedEntry.Website;
-                    lstPasswords.SelectedItems[0].SubItems[1].Text = selectedEntry.Username;
-                    lstPasswords.SelectedItems[0].SubItems[2].Text = selectedEntry.Password;
+                    lstPasswords.SelectedItems[0].SubItems[0].Text = selectedEntry.Entryname;
+                    lstPasswords.SelectedItems[0].SubItems[1].Text = selectedEntry.Website;
+                    lstPasswords.SelectedItems[0].SubItems[2].Text = selectedEntry.Username;
+                    lstPasswords.SelectedItems[0].SubItems[3].Text = selectedEntry.Password;
 
                 }
             }
