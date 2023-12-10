@@ -142,11 +142,11 @@
             // 
             // btn_go
             // 
-            btn_go.Location = new Point(260, 171);
+            btn_go.Location = new Point(298, 142);
             btn_go.Name = "btn_go";
             btn_go.Size = new Size(75, 23);
             btn_go.TabIndex = 6;
-            btn_go.Text = "GO!";
+            btn_go.Text = "Créer";
             btn_go.UseVisualStyleBackColor = true;
             btn_go.Click += btn_go_Click;
             // 
