@@ -37,10 +37,10 @@
             fichierToolStripMenuItem = new ToolStripMenuItem();
             sauvegarderToolStripMenuItem = new ToolStripMenuItem();
             lstPasswords = new ListView();
+            columnEntryname = new ColumnHeader();
             coloumnUrl = new ColumnHeader();
             columnUser = new ColumnHeader();
             columnPassword = new ColumnHeader();
-            columnEntryname = new ColumnHeader();
             btn_show = new Button();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -50,7 +50,7 @@
             btn_Add.Location = new Point(669, 168);
             btn_Add.Name = "btn_Add";
             btn_Add.Size = new Size(119, 33);
-            btn_Add.TabIndex = 1;
+            btn_Add.TabIndex = 4;
             btn_Add.Text = "Ajouter";
             btn_Add.UseVisualStyleBackColor = true;
             btn_Add.Click += btnAdd_Click;
@@ -60,7 +60,7 @@
             btn_Edit.Location = new Point(669, 224);
             btn_Edit.Name = "btn_Edit";
             btn_Edit.Size = new Size(119, 33);
-            btn_Edit.TabIndex = 3;
+            btn_Edit.TabIndex = 5;
             btn_Edit.Text = "Changer";
             btn_Edit.UseVisualStyleBackColor = true;
             btn_Edit.Click += btnEdit_Click;
@@ -70,7 +70,7 @@
             btn_Remove.Location = new Point(669, 281);
             btn_Remove.Name = "btn_Remove";
             btn_Remove.Size = new Size(119, 33);
-            btn_Remove.TabIndex = 4;
+            btn_Remove.TabIndex = 6;
             btn_Remove.Text = "Supprimer";
             btn_Remove.UseVisualStyleBackColor = true;
             btn_Remove.Click += btnRemove_Click;
@@ -116,9 +116,14 @@
             lstPasswords.MultiSelect = false;
             lstPasswords.Name = "lstPasswords";
             lstPasswords.Size = new Size(365, 238);
-            lstPasswords.TabIndex = 7;
+            lstPasswords.TabIndex = 1;
             lstPasswords.UseCompatibleStateImageBehavior = false;
             lstPasswords.View = View.Details;
+            // 
+            // columnEntryname
+            // 
+            columnEntryname.Text = "Nom de l'entrée";
+            columnEntryname.Width = 120;
             // 
             // coloumnUrl
             // 
@@ -135,17 +140,12 @@
             columnPassword.Text = "Password";
             columnPassword.Width = 0;
             // 
-            // columnEntryname
-            // 
-            columnEntryname.Text = "Nom de l'entrée";
-            columnEntryname.Width = 120;
-            // 
             // btn_show
             // 
             btn_show.Location = new Point(669, 109);
             btn_show.Name = "btn_show";
             btn_show.Size = new Size(119, 33);
-            btn_show.TabIndex = 8;
+            btn_show.TabIndex = 3;
             btn_show.Text = "Afficher";
             btn_show.UseVisualStyleBackColor = true;
             btn_show.Click += btn_show_Click;
