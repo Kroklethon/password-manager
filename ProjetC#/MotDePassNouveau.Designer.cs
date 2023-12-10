@@ -45,7 +45,7 @@
             btn_Cancel.Location = new Point(273, 256);
             btn_Cancel.Name = "btn_Cancel";
             btn_Cancel.Size = new Size(75, 23);
-            btn_Cancel.TabIndex = 9;
+            btn_Cancel.TabIndex = 5;
             btn_Cancel.Text = "Cancel";
             btn_Cancel.UseVisualStyleBackColor = true;
             // 
@@ -54,7 +54,7 @@
             btn_Ok.Location = new Point(389, 256);
             btn_Ok.Name = "btn_Ok";
             btn_Ok.Size = new Size(75, 23);
-            btn_Ok.TabIndex = 8;
+            btn_Ok.TabIndex = 4;
             btn_Ok.Text = "OK";
             btn_Ok.UseVisualStyleBackColor = true;
             btn_Ok.Click += btn_Ok_Click;
@@ -83,7 +83,7 @@
             txtbxPassword_confirm.Location = new Point(27, 182);
             txtbxPassword_confirm.Name = "txtbxPassword_confirm";
             txtbxPassword_confirm.Size = new Size(273, 23);
-            txtbxPassword_confirm.TabIndex = 4;
+            txtbxPassword_confirm.TabIndex = 2;
             txtbxPassword_confirm.UseSystemPasswordChar = true;
             // 
             // label2
@@ -110,7 +110,7 @@
             btn_show.Location = new Point(325, 145);
             btn_show.Name = "btn_show";
             btn_show.Size = new Size(75, 23);
-            btn_show.TabIndex = 17;
+            btn_show.TabIndex = 3;
             btn_show.Text = "Afficher";
             btn_show.UseVisualStyleBackColor = true;
             btn_show.Click += btn_show_Click;
