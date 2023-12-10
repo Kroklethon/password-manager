@@ -77,6 +77,7 @@
             label1.Size = new Size(31, 15);
             label1.TabIndex = 2;
             label1.Text = "Path";
+            label1.Visible = false;
             // 
             // LoginWindow
             // 

@@ -30,6 +30,7 @@ namespace ProjetC_
                     filePath = openFileDialog.FileName;
 
                     label1.Text = filePath;
+                    label1.Visible = true;
                     motDePassExistant = new MotDePassExistant();
                     motDePassExistant.Show();
                     motDePassExistant.ButtonClicked += Btn_motDePassExistant_Ok_Clicked;
