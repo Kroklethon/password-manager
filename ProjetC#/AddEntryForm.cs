@@ -27,13 +27,14 @@ namespace ProjetC_
             txtbx_entryname.Text = entry.Entryname;
             btn_add.Text = "Modifier";
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_generate_Click(object sender, EventArgs e)
         {
             PasswordGenerator passwordGenerator = new PasswordGenerator();
-            if(passwordGenerator.ShowDialog() == DialogResult.OK)
+            passwordGenerator.generator();
+            if (passwordGenerator.ShowDialog() == DialogResult.OK)
             {
                 txtbx_Mdp.Text = passwordGenerator.label1.Text;
+                
             }
         }
     }
